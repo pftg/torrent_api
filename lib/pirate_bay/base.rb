@@ -4,7 +4,7 @@ module PirateBay
 
     def initialize(search_string, category='movies')
       self.search_string = URI.encode(search_string)
-      self.category_id = PirateBay::Categories::IDS[category.upcase.strip.gsub(/S$/, "").to_sym] unless category == 0
+      self.category_id = 0 #PirateBay::Categories::IDS[category.upcase.strip.gsub(/S$/, "").to_sym] unless category == 0
       self.page = -1
 
       @results = PirateBay::ResultSet.new(self)
@@ -74,7 +74,7 @@ module PirateBay
     
 
     def fetch_search_results
-      url = "http://thepiratebay.se/search/#{search_string}/#{page}/7/#{category_id}" # highest seeded first
+      url = "http://thepiratebay.se/search/#{search_string}/#{page}/5/#{category_id}" # highest seeded first
       open(url, { "User-Agent" => "libcurl-agent/1.0" }).read
     end
 
