@@ -4,7 +4,7 @@ module PirateBay
 
     def initialize(search_string, category='movies')
       self.search_string = URI.encode(search_string)
-      self.category_id = 0 #PirateBay::Categories::IDS[category.upcase.strip.gsub(/S$/, "").to_sym] unless category == 0
+      self.category_id = 208 #PirateBay::Categories::IDS[category.upcase.strip.gsub(/S$/, "").to_sym] unless category == 0
       self.page = -1
 
       @results = PirateBay::ResultSet.new(self)
